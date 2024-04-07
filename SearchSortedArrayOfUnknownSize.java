@@ -7,7 +7,7 @@
 // Your code here along with comments explaining your approach in three sentences only
 // We dont have the length of the array, finding the high is the main thing in this problem
 // initially setting low to 0 and high to 1, until high <= target,  updating high to high *2
-class SortedRotatedArray {
+class SearchSortedArrayOfUnknownSize {
 
     public int search(ArrayReader reader, int target) {
 
