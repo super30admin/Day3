@@ -1,0 +1,33 @@
+// Time Complexity : O(log n)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : Finding a O(1) space and O(logn) solution is challenging
+
+
+//Approach to solve this problem is to identify the 2D array as a one dimensional array
+//Using the mid pointer identify the row and column value.
+//Example: if we have a 3x3 array , total elements are 9 with the range(0 to 8). 
+//mid=4, row is 4/3 =1 and column is 4%3 =1 which means 4th element in one dimensional array is identified at arr[1][1] position.
+//If 4th element is less than target increment left pointer to mid+1 otherwise high is mid-1. If the value is found at mid pointer then return true.
+//If the element is not found then return false.
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        int n=matrix.length; int m=matrix[0].length;
+        int left=0; int right=m*n-1;
+        int mid=0;
+        //convert column to row
+        while(left<=right){
+            mid=left+(right-left)/2;
+            int row=mid/m;
+            int column=mid%m;
+            if(matrix[row][column]==target){
+                return true;                
+            }else if(matrix[row][column]<target){
+                left=mid+1;
+            }else{
+                right=mid-1;
+            }
+        }
+        return false;
+    }
+}
