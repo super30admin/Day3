@@ -1,7 +1,88 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+//Problem 1: https://leetcode.com/problems/search-a-2d-matrix/description/
+// Time Complexity : O(log mn)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
 
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        int m = matrix.length, n = matrix[0].length;
+        int low = 0, high = m * n - 1;
+        while (low <= high){
+            int mid = low + (high - low)/2;
+            int midElement = matrix[mid/n][mid%n]; //Calculating the mid element of the matrix
+            if (midElement == target) return true; //If the mid element is equal to the target, the method immediately returns true.
+            else if (midElement < target){
+                low = mid + 1; //If the mid element is less than the target, the low pointer is updated to mid + 1 to narrow the search space to the right half.
+            }
+            else{
+                high = mid - 1; //If the mid element is greater than the target, the high pointer is updated to mid - 1 to narrow the search space to the left half.
+            }
+        }
+        return false;
+    }
+}
 
+//Problem 2: https://leetcode.com/problems/search-in-rotated-sorted-array/
+// Time Complexity : O(log n)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
 // Your code here along with comments explaining your approach in three sentences only
+
+class Solution {
+    public int search(int[] nums, int target) {
+        int low = 0, high = nums.length - 1;
+
+        while (low <= high ){
+            int mid = low + (high-low)/2;
+            if (nums[mid] == target) return mid; //If the element at index mid is equal to the target, the method immediately returns mid, indicating that the target has been found.
+            if (nums[low] <= nums[mid]) // left side is sorted
+            {
+                /* If the left half is sorted and the target lies within the range of the left half, the high pointer is updated to mid - 1 to narrow the search space to the left half.*/
+                if (nums[low] <= target && nums[mid] > target){ 
+                    high = mid - 1;
+                }
+                else{
+                    low =  mid + 1; //If the target does not lie within the range of the left half, the low pointer is updated to mid + 1 to narrow the search space to the right half.
+                }
+            }
+            else{
+                if (nums[mid] < target && nums[high] >= target){ // right sorted
+                    low = mid + 1;
+                }
+                else{
+                    high =  mid - 1;
+                }
+            }
+        }
+         return -1;   
+    }    
+}
+
+//Problem 3: https://leetcode.com/problems/search-in-a-sorted-array-of-unknown-size/
+// Time Complexity : O(log n)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Could not check as the problem is locked (Do not have a premium account)
+// Any problem you faced while coding this : No
+
+class Solution{
+    public int search(ArrayReader reader, int target){
+        int low = 0, high = 1;
+        while (reader.get(high) < target){
+            low = high;
+            high = high * 2;
+        }
+        while (low <= high){
+            int mid = low + (high - low)/2;
+            if (reader.get(mid) == target) return mid;
+            else if (reader.get(mid) > target){
+                high = mid - 1;
+            }
+            else{
+                low = mid + 1;
+            }
+        }
+        return -1;
+    }
+}
