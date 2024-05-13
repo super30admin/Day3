@@ -1,0 +1,28 @@
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        
+        if len(matrix) == 0 and matrix == None:
+            return False
+        
+        # Compute rows (m) and coloumns (n)
+        m = len(matrix)
+        n = len(matrix[0])
+        
+        low = 0
+        high = (m * n) - 1
+        
+        # Implement Template for Binary search
+        
+        while low <= high:
+            mid = low + (high - low) // 2 # Prevent Integer Overflow
+            
+            row = mid // n # division by col gives row num
+            col = mid % n  # mod by col gives col num
+            if matrix[row][col] == target:
+                return True
+            elif target > matrix[row][col]:
+                low = mid + 1
+            else:
+                high = mid - 1
+        return False
+        
