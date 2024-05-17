@@ -1,0 +1,37 @@
+// Time Complexity : worst case is O(log n)
+// Space Complexity : o(1)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no
+
+// calculate the mid element, one side of the array will be sorted, check if the element lies in the sorted side, if it does, check the sorted side using binary search, otherwise find in the other side
+
+class Solution {
+    public int search(int[] nums, int target) {
+        if(nums.length == 0 || nums == null) {
+            return -1;
+        }
+        int n = nums.length;
+        int low = 0;
+        int high = n - 1;
+        while(low <= high) {
+            int mid = low + (high - low) / 2;
+            if(nums[mid] == target) {
+                return mid;
+            }
+            if(nums[low] <= nums[mid]) {
+                if(target >= nums[low] && target < nums[mid]) {
+                    high = mid - 1;
+                } else {
+                    low = mid + 1;
+                }
+            } else {
+                if(target > nums[mid] && target <= nums[high]) {
+                    low = mid + 1;
+                } else {
+                    high = mid - 1;
+                }
+            }
+        }
+        return -1;
+    }
+}
