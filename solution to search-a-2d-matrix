@@ -1,0 +1,31 @@
+// Time Complexity : worst case is O(log(m*n)
+// Space Complexity : o(1)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no
+
+// treat the matrix as a 1d array as it will still be sorted, calculate the row and column numbers and perform binary search
+
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        if(matrix.length == 0 || matrix == null) {
+            return false;
+        }
+        int m = matrix.length;
+        int n = matrix[0].length;
+        int low = 0;
+        int high = m * n - 1;
+        while(low <= high) {
+            int mid = low + (high - low) / 2;
+            int row = mid / n;
+            int col = mid % n;
+            if(matrix[row][col] == target) {
+                return true;
+            } else if(target > matrix[row][col]) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        return false;
+    }
+}
