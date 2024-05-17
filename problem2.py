@@ -1,8 +1,8 @@
 '''
-// Time Complexity : O(logn)
-// Space Complexity : O(1)
-// Did this code successfully run on Leetcode : Yes
-// Any problem you faced while coding this : I had to rewatch the explaination from the recording to understand the intuition to the solution
+Time Complexity : O(logn)
+Space Complexity : O(1)
+Did this code successfully run on Leetcode : Yes
+Any problem you faced while coding this : I had to rewatch the explaination from the recording to understand the intuition properly
 '''
 class Solution:
   def search(self, nums, target):
