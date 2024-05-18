@@ -1,44 +1,38 @@
 # Time Complexity
-# O(log m*n)
+# O(log n)
 # Space Complexity
 # O(1)
 
-
 # Approach :
 
-# Assume the 2d matrix as a single array
-# Caluclate the upper bound as matrix length -1
-# Calculate the number of elements in a row as matrix[0].length
-# To find the mid points coordinates, calculate the mid point value, to find row index, mid point value is divided by the column length, to find column index, mid point value % the column length is done.
-# to maintain 0 ( log n) complexity, binary search is performed
+# Since the upper bound of array isnt known and to maintain O(log n) complexity,
+# we set l=0 and high =1 and increment h as h*=2 and make l=h, till the target is greater than h, once smaller we have found the upper bound.
+# After find low and high, calculate mid point of the reader interface, and perform binary search till the element is met, else return -1
 
 
 class Solution:
-    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+    def search(self, reader, target):
 
-        rowLength = len(matrix)
+        low = 0
+        high = 1
 
-        if rowLength == 0:
-            return False
+        while reader.get(high) < target:
+            low = high
+            high = high * 2
 
-        colLength = len(matrix[0])
+        return self.binarySearch(reader, low, high, target)
 
-        lastIndex = (rowLength * colLength) - 1
-        lowIndex = 0
+    def binarySearch(self, reader, low, high, target):
 
-        while (lowIndex <= lastIndex):
+        while (low <= high):
+            mid = (low + high) // 2
+            if (reader.get(mid) == target):
+                return mid
 
-            midElement = (lowIndex + lastIndex) // 2
-            midElementRow = midElement // colLength
-            midElementCol = midElement % colLength
-
-            if (matrix[midElementRow][midElementCol] == target):
-                return True
-
-            elif (target >= matrix[midElementRow][midElementCol]):
-                lowIndex = midElement + 1
+            if (target > reader.get(mid)):
+                low = mid+1
 
             else:
-                lastIndex = midElement - 1
+                high = mid-1
 
-        return False
+        return -1

@@ -3,36 +3,37 @@
 # Space Complexity
 # O(1)
 
+
 # Approach :
 
-# Since the upper bound of array isnt known and to maintain O(log n) complexity,
-# we set l=0 and high =1 and increment h as h*=2 and make l=h, till the target is greater than h, once smaller we have found the upper bound.
-# After find low and high, calculate mid point of the reader interface, and perform binary search till the element is met, else return -1
-
+# When a sorted array is rotated, on dividing it in 2 parts, at least one side is sorted
+# first we search the target element in the sorted part of the array, if not found we move to the other part
+# on both the parts we perform binary search, but preference is always to search first from the sorted side
 
 class Solution:
-    def search(self, reader, target):
+    def search(self, arr: List[int], target: int) -> int:
 
+        if not arr:
+            return -1
+
+        high = len(arr)-1
         low = 0
-        high = 1
-
-        while reader.get(high) < target:
-            low = high
-            high = high * 2
-
-        return self.binarySearch(reader, low, high, target)
-
-    def binarySearch(self, reader, low, high, target):
 
         while (low <= high):
-            mid = (low + high) // 2
-            if (reader.get(mid) == target):
+            mid = (high+low) // 2
+
+            if (arr[mid] == target):
                 return mid
 
-            if (target > reader.get(mid)):
-                low = mid+1
-
+            if (arr[low] <= arr[mid]):
+                if (target >= arr[low] and target < arr[mid]):
+                    high = mid-1
+                else:
+                    low = mid + 1
             else:
-                high = mid-1
+                if (target > arr[mid] and target <= arr[high]):
+                    low = mid+1
+                else:
+                    high = mid-1
 
         return -1

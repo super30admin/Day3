@@ -1,39 +1,44 @@
 # Time Complexity
-# O(log n)
+# O(log m*n)
 # Space Complexity
 # O(1)
 
 
 # Approach :
 
-# When a sorted array is rotated, on dividing it in 2 parts, at least one side is sorted
-# first we search the target element in the sorted part of the array, if not found we move to the other part
-# on both the parts we perform binary search, but preference is always to search first from the sorted side
+# Assume the 2d matrix as a single array
+# Caluclate the upper bound as matrix length -1
+# Calculate the number of elements in a row as matrix[0].length
+# To find the mid points coordinates, calculate the mid point value, to find row index, mid point value is divided by the column length, to find column index, mid point value % the column length is done.
+# to maintain 0 ( log n) complexity, binary search is performed
+
 
 class Solution:
-    def search(self, arr: List[int], target: int) -> int:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
 
-        if not arr:
-            return -1
+        rowLength = len(matrix)
 
-        high = len(arr)-1
-        low = 0
+        if rowLength == 0:
+            return False
 
-        while (low <= high):
-            mid = (high+low) // 2
+        colLength = len(matrix[0])
 
-            if (arr[mid] == target):
-                return mid
+        lastIndex = (rowLength * colLength) - 1
+        lowIndex = 0
 
-            if (arr[low] <= arr[mid]):
-                if (target >= arr[low] and target < arr[mid]):
-                    high = mid-1
-                else:
-                    low = mid + 1
+        while (lowIndex <= lastIndex):
+
+            midElement = (lowIndex + lastIndex) // 2
+            midElementRow = midElement // colLength
+            midElementCol = midElement % colLength
+
+            if (matrix[midElementRow][midElementCol] == target):
+                return True
+
+            elif (target >= matrix[midElementRow][midElementCol]):
+                lowIndex = midElement + 1
+
             else:
-                if (target > arr[mid] and target <= arr[high]):
-                    low = mid+1
-                else:
-                    high = mid-1
+                lastIndex = midElement - 1
 
-        return -1
+        return False
