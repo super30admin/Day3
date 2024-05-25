@@ -1,3 +1,5 @@
+// Time complexity: O(log (n))
+// Space complexity: O(1)
 class SearchSortedArrayUnknownSize {
     public int search(ArrayReader reader, int target) {
         int low = 0;
