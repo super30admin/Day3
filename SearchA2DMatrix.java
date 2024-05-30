@@ -1,4 +1,4 @@
-//Approach : In each row, we check that if the target is <= last element only then we do a bonary search on that row otherwise we go to the next row
+//Approach : In each row, we check that if the target is <= last element only then we do a binary search on that row otherwise we go to the next row
 //Time - O(m + log n) where m is the number of rows and n is the number of columns
 //Space - O(1)
 public class SearchA2DMatrix {
