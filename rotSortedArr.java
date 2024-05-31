@@ -1,3 +1,9 @@
+
+// Time Complexity : o(log n)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
 class Solution {
     public int search(int[] nums, int target) {
         if(nums.length == 0 || nums == null){
