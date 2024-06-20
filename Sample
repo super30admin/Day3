@@ -1,7 +1,41 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+Problem 1: Search a 2D matrix
+// Time Complexity : O(log(m*n))
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode :Yes
+// Any problem you faced while coding this :No
 
 
 // Your code here along with comments explaining your approach in three sentences only
+
+// First implement binary search on the matrix[] by calculation mid whith left = 0 and right = matrix.length
+// If the target is between matrix[mid][0] to matrix[mid][mid.length-1] then perform usual binary search in that matrix[mid] array
+
+
+Problem 2: Search in Rotated Sorted Array
+// Time Complexity : O(log n)
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode :Yes
+// Any problem you faced while coding this :No
+
+
+// Your code here along with comments explaining your approach in three sentences only
+
+// find the mid of the array 
+// look for the sorted half, is it on the right or is it on the left 
+// if the sorted array is on the right check if the element between that sorted half 
+// if not move on to the unsorted half and repeat binary search
+
+Problem 3: Search in sorted array of unknown size
+// Time Complexity : O(log n)
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode :Yes
+// Any problem you faced while coding this :No
+
+
+// Your code here along with comments explaining your approach in three sentences only
+
+// initialized back=0 and front=1 two integers
+// in a while loop chack with the .get method if back and front gives us the target 
+// if not chack if the target is in between back and front 
+// if yes preform binary search else change back to front and front to front * 2
+// continue with the loof while back<=front
