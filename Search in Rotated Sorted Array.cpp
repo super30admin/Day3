@@ -1,0 +1,1 @@
+// Cant think of a sol. Dont want to look at the sol now. Want to see sir's approach, then i will code it after the class
