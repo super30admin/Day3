@@ -1,3 +1,9 @@
+/*
+Time Complexity : O(logn)
+Space Complexity : O(n)
+
+Did this code successfully run on Leetcode : yes
+*/ 
 class BinarySeachOnRotatedSortedArray {
     public int search(int[] nums, int target) {
         int left = 0;
