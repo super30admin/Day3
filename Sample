@@ -1,7 +1,129 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+##############rotated sorted array ####################
+
+// Time Complexity : should be O(n) as I used loop to identify place of pivot
+// Space Complexity : not sure
+// Did this code successfully run on Leetcode : following case failed and other may fail
+[1,3]
+// Any problem you faced while coding this : made a mistake to take mid for assigning to left and right pointer but it should be mid+1 and mid-1. Also, for running while loop for BS I took < instead of <=
 
 
 // Your code here along with comments explaining your approach in three sentences only
+
+# made mistake selectign mid+1 and mid -1
+class Solution:
+# in this location I am find the pivot element where the array starts and than I call BS function to find answer
+    def search(self, nums: List[int], target: int) -> int:
+        len1=len(nums)
+        l1=0
+        r1=len1-1
+        pvt=0
+        for i in range(1,len1-1):
+            if nums[i]<nums[i+1] and nums[i]<nums[i-1]:
+                pvt=i
+                break
+        print(pvt)
+        if target>nums[l1]:
+            return self.bs(nums,l1,pvt-1,target)
+        else:
+            return self.bs(nums,pvt,r1,target)
+
+# BS function to find answer
+    def bs(self, nums: List[int], L: int,R: int,target: int) -> int:
+        l1=L
+        r1=R
+        while l1<=r1:
+            mid=(l1+r1)//2
+            if nums[mid]==target:
+                return mid
+            if nums[mid]>target:
+                r1=mid-1
+            if nums[mid]<target:
+                l1=mid+1
+        return -1
+
+
+
+##############702. Search in a Sorted Array of Unknown Size####################
+
+
+// Time Complexity : logn
+// Space Complexity : not sure
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : made a mistake to take mid for assigning to left and right pointer but it should be mid+1 and mid-1. Also, for running while loop for BS I took < instead of <=
+
+// DOUBT - why is r1=10000 working and r1=10**4 not working
+
+
+// Your code here along with comments explaining your approach in three sentences only
+
+
+# """
+# This is ArrayReader's API interface.
+# You should not implement it, or speculate about its implementation
+# """
+#class ArrayReader:
+#    def get(self, index: int) -> int:
+
+class Solution:
+    def search(self, reader: 'ArrayReader', target: int) -> int:
+        l1=0
+        r1=10000
+        while l1<=r1:
+            mid=(l1+r1)//2
+            print(reader.get(mid))
+            if reader.get(mid)==target:
+                return mid
+            if reader.get(mid)==2**31-1:
+                r1=mid-1
+            if reader.get(mid)>target:
+                r1=mid-1
+            if reader.get(mid)<target:
+                l1=mid+1
+        return -1
+        
+
+
+##############74. Search a 2D Matrix##########################
+
+
+
+// Time Complexity : logm*n
+// Space Complexity : not sure
+// Did this code successfully run on Leetcode : initial classes passed, time exceeded on following case
+[[1,3,5]]
+// Any problem you faced while coding this : no
+
+
+// Your code here along with comments explaining your approach in three sentences only
+
+
+
+#first applied BS on 1st element ow rows to identify in which row it is present than once row is identified another BS is applied in that complete row
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        rowu=0
+        rowd=len(matrix)-1
+        coll=0
+        colr=len(matrix[0])-1
+        while rowu<=rowd: # first binary search to identify the row
+            mid=(rowu+rowd)//2
+            #print(matrix[mid][-1])
+            if target>=matrix[mid][0] and target <=matrix[mid][-1]:
+                while coll<=colr:     #second binary search to identify within the row 
+                    mid1=(coll+colr)//2
+                    if matrix[mid][mid1]==target:
+                        return True
+                    if matrix[mid][mid1]>target:
+                        colr=mid1-1
+                    if matrix[mid][mid1]<target:
+                        coll=mid+1
+                return False
+            if target>matrix[mid][-1]:
+                rowu=mid+1
+            if target<matrix[mid][0]:
+                rowd=mid-1
+        return False
+
+        #return True
+        
+        
