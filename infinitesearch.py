@@ -1,14 +1,25 @@
-class Solution(object):
-    def search(self, reader, target):
-        start, end = 0, 10**4-1
-        outbound = 2147483647 
-        while start <= end:
-            mid = start + (end-start)/2
-            midval = reader.get(mid)
-            if midval == 2147483647 or midval > target:
-                end = mid-1
-            elif midval < target:
-                start = mid + 1
+# """
+# This is ArrayReader's API interface.
+# You should not implement it, or speculate about its implementation
+# """
+#class ArrayReader:
+#    def get(self, index: int) -> int:
+
+#time: O(log n)
+#space: O(1)
+class Solution:
+    def search(self, reader: 'ArrayReader', target: int) -> int:
+        r = 1
+        while reader.get(r)<target:
+            r=r*2
+        l=0
+        while l<=r:
+            m = (l+r)//2
+            if target==reader.get(m):
+                return m
+            elif target>reader.get(m):
+                l+=1
             else:
-                return mid
+                r-=1
+        
         return -1
