@@ -5,6 +5,10 @@
  * return the index of any occurrence. If it isn’t present, return -1.
  */
 
+//time complexity O(logn)
+//space compexity O(1)
+//Did this code successfully run on Leetcode : yes
+
 class InfinteSortedArray {
     public int search(ArrayReader reader, int target) {
         int low = 0;

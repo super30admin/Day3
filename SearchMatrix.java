@@ -1,4 +1,4 @@
-//time complexity O(log(mn)) not sure
+//time complexity O(log(mn))
 //space compexity O(1)
 //Did this code successfully run on Leetcode : yes
 
