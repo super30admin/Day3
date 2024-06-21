@@ -45,9 +45,10 @@ class Solution {
             }
             while (l <= h){
                 int mid = l + (h - l)/2;
-                if (reader.get(mid) == target) return mid;
+                int num = reader.get(mid);
+                if (num == target) return mid;
                 else{
-                    if (reader.get(mid) < target) l = mid + 1;
+                    if (num < target) l = mid + 1;
                     else h = mid - 1;
                 }
             }
