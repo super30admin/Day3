@@ -1,7 +1,65 @@
-// Time Complexity :
+// Time Complexity :O(log n)
 // Space Complexity :
 // Did this code successfully run on Leetcode :
 // Any problem you faced while coding this :
 
 
 // Your code here along with comments explaining your approach in three sentences only
+interface ArrayReader {
+    int get(int index);
+}
+
+class MockArrayReader implements ArrayReader {
+    private int[] array;
+
+    public MockArrayReader(int[] array) {
+        this.array = array;
+    }
+
+    @Override
+    public int get(int index) {
+        if (index >= array.length) {
+            return Integer.MAX_VALUE; 
+        }
+        return array[index];
+    }
+}
+
+
+class Solution {
+    public int search(ArrayReader reader, int target) {
+        int lo = 0, hi = Integer.MAX_VALUE;
+
+        
+        if (reader.get(0) == target) 
+        return 0;
+
+        while (lo <= hi) {
+            int mi = lo + (hi - lo) / 2;
+            int val = reader.get(mi);
+
+            if (val == target) {
+                return mi;
+            } else if (val < target) {
+                lo = mi + 1;
+            } else {
+                hi = mi - 1;
+            }
+        }
+        return -1;
+    }
+}
+
+
+public class Main {
+    public static void main(String[] args) {
+        int[] nums = {-5,-3,0,1,4,5,6,7,11,15,18};
+        int target = 15;
+
+        ArrayReader reader = new MockArrayReader(nums);
+        Solution solution = new Solution();
+        
+        int result = solution.search(reader, target);
+        System.out.println("Index of target " + target + " is: " + result);
+    }
+}
