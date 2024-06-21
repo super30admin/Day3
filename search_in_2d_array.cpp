@@ -1,12 +1,14 @@
 /*
  *                  Search in a 2D Array
  *
+ * Leetcode : https://leetcode.com/problems/search-a-2d-matrix/description/
+ * 
  * Time complexity : O(log [nxm])
  * Space complexity : O(1)
  * Did this code successfully run on Leetcode : Yes
  * Any problem you faced while coding this : -
  * Your code here along with comments explaining your approach in three sentences only
- *          - Using binary search
+ *          - Using binary search, keep recurcively looking for the element.
  */
 #include<iostream>
 #include<vector>
