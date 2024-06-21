@@ -1,3 +1,17 @@
+# // Time Complexity : O(log(row*column))
+
+# // Space Complexity : O(1)
+
+# // Did this code successfully run on Leetcode : Yes
+
+# // Any problem you faced while coding this : There were a lot of syntax errors since, 
+# // I am using c++ after a very long time
+
+
+#  // Your code here along with comments explaining your approach in three sentences only
+#  // Using the approach thought in class 
+#  // imagining the 2D matrix as a 1D array and then applying binary search
+
 from typing import List
 class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
