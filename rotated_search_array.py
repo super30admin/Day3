@@ -1,6 +1,6 @@
 """
 Time Compexity: O(logn)
-Sace Complexity: O(log n)
+Sace Complexity: O(1)
 """
 
 
