@@ -1,7 +1,134 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+// Time Complexity : O(logn)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : Initially I imagined about the approach of doing binary seach row-wise and column-wise. I had hard time understanding
+// calculation of rowindex and colindex in the below algorithm. 
 
 
 // Your code here along with comments explaining your approach in three sentences only
+// Search in a 2D Matrix
+// We will image a matrix as a 2D matrix and then we will calculate mid index and accordingly calculate row index and col index. 
+// Then we will apply simple binary search on it where if the current mid element is less than target then go right otherwise go left.
+// This we can achieve by updating low and high pointers. 
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        
+        int m = matrix.length;
+        int n = matrix[0].length;
+
+        int low = 0;
+        int high = m*n - 1;
+
+        while (low <= high) {
+            int mid = low + (high - low)/2;
+
+            int rowindex = mid/n;
+            int colindex = mid%n;
+
+            if(matrix[rowindex][colindex] == target) {
+                return true;
+            } else if (matrix[rowindex][colindex] > target) {
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+
+        return false;
+
+    }
+}
+
+
+// Time Complexity : O(logn)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this :  
+
+
+// Your code here along with comments explaining your approach in three sentences only
+// Main idea in this problem is always one side will be sorted and one side will unsorted in rotated sorted array. 
+// First we will check which side is sorted with checking low element is less than mid element.
+// Then first we will go to sorted side and check element lies in the sorted side or not and change the index accordingly.
+// If the second is sorted then again we will go to sorted side and check if the mid element is less than high element and change index accordingly. 
+class Solution {
+    public int search(int[] nums, int target) {
+        
+        if ( nums == null || nums.length == 0) return -1;
+
+        int low = 0;
+        int high = nums.length - 1;
+
+        while (low <= high) {
+            int mid = low + (high - low)/2;
+
+            if (nums[mid] == target) {
+                return mid;
+            } else {
+                if (nums[low] <= nums[mid]) {
+                    if (nums[low] <= target && nums[mid] > target) {
+                        high = mid - 1;
+                    } else {
+                        low = mid + 1;
+                    }
+                } else {
+                    if (nums[mid] < target && nums[high] >= target) {
+                        low = mid + 1;
+                    } else {
+                        high = mid - 1;
+                    }
+                }
+            }
+        }
+
+        return -1; 
+
+    }
+}
+
+
+// Time Complexity : O(logn)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this :  Initially I thought of taking regular intervals and did not this of increaseing the interval by multiplying it with 2.
+
+
+// Your code here along with comments explaining your approach in three sentences only
+// We will take pointer on first element first then will multiply it with 2 until we find a range the element lies in.
+// Once we find the range we will perform simple binary search on it.
+// If we do not find the element we will return -1.
+/**
+ * // This is ArrayReader's API interface.
+ * // You should not implement it, or speculate about its implementation
+ * interface ArrayReader {
+ *     public int get(int index) {}
+ * }
+ */
+
+ class Solution {
+    public int search(ArrayReader reader, int target) {
+        
+        int low = 0;
+        int high = 1;
+
+        while (reader.get(high) < target) {
+            low = high;
+            high = high * 2;
+        }
+
+        while (low <= high) {
+            int mid = low + (high - low)/2;
+
+            if (reader.get(mid) == target) {
+                return mid;
+            } else if (reader.get(mid) > target) {
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+
+        return -1;
+
+    }
+}
