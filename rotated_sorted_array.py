@@ -12,9 +12,6 @@ if yes move low/high to that section and repeat
 until nums[mid] == target.
 
 """
-
-
-
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
         if not nums:
