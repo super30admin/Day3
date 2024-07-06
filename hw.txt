@@ -1,0 +1,86 @@
+Problem #1
+
+We have a matrix that we have to find a target. We need to treat this as a normal binary search problem
+except we need a formula to find the row and column inside the matrix. After we find that then this will
+become a O(log m*n) solution.
+
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        if matrix == None or len(matrix[0]) == 0:
+            return False
+        m = len(matrix)
+        n = len(matrix[0])
+        low = 0
+        high = (m*n) - 1
+
+        while low <= high:
+            mid = low + (high - low) // 2
+            row = mid // n
+            col = mid % n
+            value = matrix[row][col]
+
+            if target == value:
+                return True
+            elif target < value:
+                high = mid - 1
+            else:
+                low = mid + 1
+        return False
+
+Problem #2
+
+We need to check which side is sorted because if the array is rotated then one side at least must be
+sorted. After finding this we need to check which side the target will lay in and go in that side or the 
+other.
+
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        if nums == None or len(nums) == 0:
+            return -1
+        
+        low = 0
+        high = len(nums) - 1
+
+        while low <= high:
+            mid = low + (high - low) // 2
+            #find the sorted half
+            if target == nums[mid]:
+                return mid
+            elif nums[low] <= nums[mid]:
+                if target >= nums[low] and target < nums[mid]:
+                    high = mid - 1
+                else:
+                    low = mid + 1
+            else:
+                if target > nums[mid] and target <= nums[high]:
+                    low = mid + 1
+                else:
+                    high = mid - 1
+        return -1
+
+
+Problem #3
+
+we have an array of unkown size. So we need to set our low and high bounds, each time we will increase
+the high bound by doubling it. This offsets our dividing by 2 when we do the binary search keeping it 
+log(n) time. After doing this we just need to do our normal binary search to find the target.
+
+def search(self, reader: 'ArrayReader', target: int) -> int:
+    low = 0
+    high = 1
+
+    while low < high:
+        low = 1
+        high = high * 2
+        return self.binarySearch(reader, target, low, high)
+
+def binarySearch(self, reader: 'ArrayReader', target: int, low: int, high: int) -> int:
+    while low <= high:
+        mid = low + (high - low) // 2
+        if reader.get(mid) == target:
+            return mid
+        elif reader.get(mid) < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return -1
