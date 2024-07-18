@@ -1,4 +1,4 @@
-//Time Complexity: O(log(mn))
+//Time Complexity: O(log(m.n))
 //Space Complexity: O(1)
 
 class Solution {

@@ -1,4 +1,4 @@
-//Time Complexity: O(logn+logm)
+//Time Complexity: O(log n)
 //Space Complexity: O(1)
 
 class SearchSortedUnknownSize {
