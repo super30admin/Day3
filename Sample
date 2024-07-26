@@ -1,7 +1,94 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+// Search in a 2D matrix
+// Time Complexity : O(log(m*n))
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+// Assuming my 2D array as an 1D array and getting the row and column indices through line 23 & 24
+
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        int low = 0;
+        int high = (matrix.length * matrix[0].length) - 1;
+        int numOfColumns = matrix[0].length;
+        while (low <= high) {
+            int mid = low + (high-low)/2;
+            int midElementRow = mid/numOfColumns;
+            int midElementCol = mid % numOfColumns;
+            if(matrix[midElementRow][midElementCol] == target) {
+                return true;
+            } else if(matrix[midElementRow][midElementCol] > target) {
+                high = mid-1;
+            } else {
+                low = mid+1;
+            }
+        } 
+        return false;
+    }
+}
+
+// Search in a rotated sorted array
+//Time Complexity : O(log n)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+class Solution {
+    public int search(int[] nums, int target) {
+        int low = 0;
+        int high = nums.length - 1;
+        while(low <= high) {
+            int mid = low + (high-low)/2;
+            if(nums[mid] == target) {
+                return mid;
+            }
+            else if (nums[low] <= nums[mid]) {
+                //left subarray is sorted
+                if (nums[low] <= target && target < nums[mid]) {
+                    high = mid-1;
+                } else {
+                    low = mid+1;
+                }
+            } else {
+                if(target <= nums[high] && target > nums[mid]) {
+                    low = mid+1;
+                } else {
+                    high = mid-1;
+                }
+            }
+        }
+        return -1;
+    }
+}
 
 
-// Your code here along with comments explaining your approach in three sentences only
+
+// Search in a sorted array of unknown size
+// Time Complexity: O(log n)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+// Find the range of array where we need to apply binary search. Once we get the range, we can apply binary search to find the element
+
+public class SearchInInfiniteArray {
+
+	public int search(ArrayReader reader, int target) {
+		int low = 0;
+		int high = 1;
+		while (reader.get(high) < target) {
+			low = high;
+			high = 2 * high;
+		}
+		while (low <= high) {
+			int mid = low + (high - low) / 2;
+			if (reader.get(mid) == target) {
+				return mid;
+			} else if (reader.get(mid) > target) {
+				high = mid - 1;
+			} else {
+				low = mid + 1;
+			}
+		}
+		return -1;
+	}
+}
+
