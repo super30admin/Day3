@@ -4,9 +4,16 @@
 ## Problem1 
 Search a 2D Matrix(https://leetcode.com/problems/search-a-2d-matrix/)
 
+The 1D matrix indices can be equated to row and col values in a 2D matrix as follows
+row = index/row.size
+col = index%row.size
+
 ## Problem2 
 Search in a Rotated Sorted Array (https://leetcode.com/problems/search-in-rotated-sorted-array/)
 
+In a rotated sorted array, upon considering the mid point we notice that either side of the mid point is always sorted.
+We identify which side of the array is sorted by checking if either low <= mid or mid <= high
+We leverage these facts to our advantage and apply binary search.
 
 
 
