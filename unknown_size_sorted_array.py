@@ -14,11 +14,11 @@ class Solution:
         while (reader.get(high)< target):
             low = high
             high *=2
-        while low<=high:
+        while (low<=high):
             mid = low+(high-low)//2
             if (reader.get(mid)==target):
                 return mid
-            if (reader.get(high)>target):
+            elif (reader.get(mid)>target):
                 high = mid-1
             else:
                 low = mid +1
