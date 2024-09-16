@@ -1,0 +1,32 @@
+// Time Complexity : O(log n)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : Target check is not performed on correct range initially. High value could be multiple by 3 or 4 and soon upto infintiy.
+//Later determined that balance should be maintained while calculating the high value.If you take the minimum tange the we can optimize the search space for binary search.
+
+//Approach to solve this problem is to identify low and high value , because array size is infinite.
+//Do a binary search to identify the target otherwise return -1
+public class SearchInArrayOfUnknownSize {
+		
+		public static void searchInArray(ArrayReader reader, int target){			
+			int start=0;
+			int end=1;
+			int mid=0;
+			if(target>reader.get(end)) {
+				start=end;
+				end=end*2;
+			}		
+			
+	        while(left<=right){
+	            mid=left+(right-left)/2;
+	            if(reder.get(mid)==target){
+	                return mid;
+	            }else if(reader.get(mid)<target){
+	               left=mid+1;
+	            }else{
+	               right=mid-1;
+	            }
+	        }
+	        return -1;
+	    }
+}
