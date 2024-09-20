@@ -1,26 +1,27 @@
 '''
-    Time Complexity: O(logn)
+    Time Complexity: O(log(mxn))
     Space Complexity: O(1)
     Ran successfully on leetcode
-    Difficulty: Had solved it before, so was relatively easy
+    Difficulty: Used the mlogn solution before but updated it to log(mn) solution
 '''
 class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
         m = len(matrix)
+        n = len(matrix[0])
+        low, high = 0, m*n - 1
+        
 
-        for i in range(m):
-            n = len(matrix[i])
-            l, r = 0, n - 1
+        while low <= high:
+            mid = low + (high - low)//2
 
-            if matrix[i][l] <= target <= matrix[i][r]:
-                while l <= r:
-                    mid = (l+r)//2
+            r = mid // n
+            c = mid % n
 
-                    if matrix[i][mid] == target: 
-                        return True
-                    elif matrix[i][mid] < target:
-                        l = mid + 1
-                    else:
-                        r = mid - 1
+            if matrix[r][c] == target:
+                return True
+            elif matrix[r][c] < target:
+                low = mid + 1
+            else:
+                high = mid - 1
 
         return False
