@@ -1,3 +1,16 @@
+# Approach
+# Search in rotated array
+# It is Similar to traditional binary Search where every half we need to check the remaining half if strictly increasing or not
+# if strictly increasing if target is greater than low and less than mid move left else move right.
+# if the half is not strictly increasing then if target is greater then mid and less than high move right else move left.
+
+# Complexities
+# Time Complexity: O(log n).
+# space Complexity : O(1) + O(log n) recursive stack space
+
+
+
+
 from typing import List
 
 

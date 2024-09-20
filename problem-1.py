@@ -1,3 +1,14 @@
+# Approach
+# consider two binary searches one for row and one for column
+# first we need to get the row index where target is assumed to present. To achieve this we will search wheather the target is in between the start and end value of mid row
+# if the target id less than o index move left and if taget is greater than last index  value of mid row move right.
+# once we get the row_index then the column search is similar to 1-dbinary search if target is equal to mid return . if target < mid move left else move right
+
+
+# Complexities
+# Time Complexity: O(log n + log m) where m and n are no of rows and columns.
+# space Complexity : O(1) + O(log nm) recursive stack space
+
 from typing import List
 
 
