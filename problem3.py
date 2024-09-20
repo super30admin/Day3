@@ -46,3 +46,6 @@ class Solution:
                 low = mid+1
 
         return -1
+
+# Time Complexity: O(log n), where n is the index where the target is found
+# Space Complexity: O(1)
