@@ -1,7 +1,57 @@
-// Time Complexity :
+// Time Complexity : 
 // Space Complexity :
 // Did this code successfully run on Leetcode :
 // Any problem you faced while coding this :
 
 
 // Your code here along with comments explaining your approach in three sentences only
+class Solution(object):
+    def search(self, nums, target): #Time Complexity:o(logn)
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: int
+        """
+        left = 0
+        right = len(nums)-1
+
+        while(left <= right):
+            mid  = left + (right - left) // 2
+            if(nums[mid] == target):
+                return mid
+            elif(nums[mid] >= nums[left]):
+                if(target >= nums[left] and target < nums[mid]):
+                    right = mid - 1
+                else:
+                    left = mid + 1
+            else:
+                if(target <= nums[right] and target > nums[mid]):
+                    left = mid +1
+                else:
+                    right = mid - 1
+        return -1
+class Solution(object):
+    def searchMatrix(self, matrix, target): #O(log m +log n)
+        """
+        :type matrix: List[List[int]]
+        :type target: int
+        :rtype: bool
+        """
+        m = len(matrix)
+        n = len(matrix[0])
+        low = 0 
+        high = (m*n) - 1
+
+        while low <= high:
+            mid = low + (high-low)//2
+            r = mid // n
+            c = mid % n
+
+            if(matrix[r][c] == target):
+                return True
+            
+            elif(target < matrix[r][c]):
+                high = mid - 1
+            else:
+                low = mid + 1
+        return False
