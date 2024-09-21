@@ -5,3 +5,59 @@
 
 
 // Your code here along with comments explaining your approach in three sentences only
+
+// Search in Rotated Sorted Array
+// T.C = log(n)
+
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        low = 0
+        high = len(nums) - 1
+
+        while(low<=high):
+            mid = low + (high-low)//2
+            if(nums[mid] == target):
+                return mid
+            elif(nums[low] <= nums[mid]):
+                if(nums[low] <= target and nums[mid]>target):
+                    high = mid - 1
+                else:
+                    low = mid + 1
+            else:
+                if(target > nums[mid] and target <= nums[high]):
+                    low = mid + 1
+                else:
+                    high = mid - 1
+
+        return -1
+
+// Search Inside a Sorted Array whose Length is unknown
+// Dont have Premium so I have not done it
+
+
+// Search a 2D Matrix
+// T.C = log(m + n)
+
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        m = len(matrix)
+        n = len(matrix[0])
+        low = 0
+        high = m * n - 1
+
+        while(low <= high):
+            mid = low + (high-low)//2
+
+            r = mid // n
+            c = mid % n
+
+            if(matrix[r][c] == target):
+                return True
+            else:
+                if(matrix[r][c] < target):
+                    low = mid + 1
+                else:
+                    high = mid - 1
+
+        return False
+        
