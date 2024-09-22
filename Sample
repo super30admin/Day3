@@ -57,7 +57,14 @@ class Solution {
     }
 }
 
-//problem 2: 
+// Time Complexity : O(log (n))
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : yes various compilation errors as well as logical errors
+
+
+// Your code here along with comments explaining your approach in three sentences only
+//problem 2: (https://leetcode.com/problems/search-in-rotated-sorted-array/)
 class Solution {
     public int search(int[] nums, int target) {
         int low =0, high = nums.length-1;
@@ -91,6 +98,55 @@ class Solution {
                 {
                     high =mid-1;
                 }
+            }
+        }
+        return -1;
+    }
+}
+//Problem #3
+/**
+ * // This is ArrayReader's API interface.
+ * // You should not implement it, or speculate about its implementation
+ * interface ArrayReader {
+ *     public int get(int index) {}
+ * }
+ */
+// Time Complexity : O(log (n))
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : yes various compilation errors as well as logical errors
+
+
+// Your code here along with comments explaining your approach in three sentences only
+//problem 3: 
+class Solution {
+    public int search(ArrayReader reader, int target) {
+        int low = 0;
+        int high = 1;
+        while(reader.get(high)<target)
+        {
+            int templow=high+1;
+            high+=(high-low+1)*2;
+            low=templow;
+        }
+        return binarySearch(reader, low, high, target);
+    }
+    private int binarySearch(ArrayReader reader, int low, int high, int target)
+    {
+        while (low<=high)
+        {
+            int mid = low+(high-low)/2;
+            if(reader.get(mid)==target)
+            {
+                return mid;
+            }
+            else if(reader.get(mid)>target)
+            {
+                high=mid-1;
+            }
+            else
+            {
+                low=mid+1;
             }
         }
         return -1;
