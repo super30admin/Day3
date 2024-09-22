@@ -1,7 +1,60 @@
-// Time Complexity :
+// Time Complexity : O(log (m*n))
 // Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : yes various compilation errors as well as logical errors
 
 
 // Your code here along with comments explaining your approach in three sentences only
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        //determine which row contains the target
+        int m=matrix[0].length;// number of columns
+        int n = matrix.length; // number of rows
+        int low =0, high=n-1; // these are rows
+        while(low<=high)
+        {
+            int mid=low+(high-low)/2;
+            if(matrix[mid][0]==target || matrix[mid][m-1]==target)// check the left most and the right most element
+            {
+                return true;
+            }
+            else if (target> matrix[mid][0] && target < matrix[mid][m-1])// found the row where the target should exist
+            {
+                return binarySearch(matrix, mid, target);
+            }
+            else if (target < matrix[mid][0])
+            {
+                high = mid-1;
+            }
+            else
+            {
+                low=mid+1;
+            }
+        }
+        return false;
+    }
+    //perform binary search on a sepcific row
+    private boolean binarySearch( int[][] matrix, int row, int target)
+    {
+        int low = 0, high = matrix[0].length-1;
+        while(low<=high)
+        {
+            int mid=low+(high-low)/2;
+            if(matrix[row][mid]==target)
+            {
+                return true;
+            }
+            else if(target<matrix[row][mid])
+            {
+                high=mid-1;
+            }
+            else
+            {
+                low=mid+1;
+            }
+        }
+        return false;
+    }
+}
+
+//
