@@ -26,6 +26,9 @@ Example 2:
 #class ArrayReader:
 #    def get(self, index: int) -> int:
 
+
+# time complexity: O(log n)
+# space complexity: O(1)
 class Solution:
     def search(self, reader: 'ArrayReader', target: int) -> int:
         low = 0
