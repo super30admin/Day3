@@ -1,7 +1,38 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+
+Question 1: Binary Search in 2D array.
+// Time Complexity : O(Log(M*N))
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
 
 
 // Your code here along with comments explaining your approach in three sentences only
+// First I have assumed all the elements in a 1-D array, and them calculate the mid according to that
+// and then calculated row and col values using
+//          row = mid // n 
+//          col = mid %  n
+// where n is no of cols in the matrix.
+
+Question 2: Binary rotated sorted array array.
+// Time Complexity : O(log(N))
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+
+// Your code here along with comments explaining your approach in three sentences only
+// First I found out which kind of sorted array it is (right or left )
+// then if my target lies in nums[mid] after or before then once I get the target range
+// I applied binary search on it to fing my element on mid position 
+
+Question 3:  Search in an Infinite Sorted array.
+// Time Complexity : O(Log(N))
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+
+// Your code here along with comments explaining your approach in three sentences only
+// I have found the right pointer <target by incrementing it to 2X
+// by doing so I for left = 0 and right = some length where my target might lies. 
+// then I applied bibary Search approach
