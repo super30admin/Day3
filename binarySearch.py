@@ -1,5 +1,5 @@
 # // Time Complexity : O(log(n)) since binary search
-# // Space Complexity : O(1)
+# // Space Complexity : O(1) No aux variables
 # // Did this code successfully run on Leetcode : Yes
 # // Any problem you faced while coding this : Removed additinal case for both left sorted and right sorted arrays when one if condition is enough.
 

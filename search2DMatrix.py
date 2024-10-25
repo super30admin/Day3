@@ -1,5 +1,5 @@
-# // Time Complexity : log(m)+log(n)
-# // Space Complexity :O(1)
+# // Time Complexity : O(log(n)) = O(log(m)+log(n) because binary search
+# // Space Complexity :O(1) because no Auxilliary variables taking space
 # // Did this code successfully run on Leetcode : Yes
 # // Any problem you faced while coding this : Calculating mid required "//" instead of '/'. Accidently used 'm' instead of "mid"
 
