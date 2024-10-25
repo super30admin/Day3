@@ -4,7 +4,7 @@ class Solution:
     def search(self, reader: 'ArrayReader', target: int) -> int:
         low = 0
         high = 1
-        while reader.get(high) < target:
+        while reader.get(high) <= target:
             low = high
             high = high * 2
 
