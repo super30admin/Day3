@@ -1,7 +1,7 @@
 # // Time Complexity : log(m)+log(n)
 # // Space Complexity :O(1)
 # // Did this code successfully run on Leetcode : Yes
-# // Any problem you faced while coding this : Leetcode says Timelimit exceeded. calculating mid required "//" instead of '/'
+# // Any problem you faced while coding this : Calculating mid required "//" instead of '/'. Accidently used 'm' instead of "mid"
 
 # // Your code here along with comments explaining your approach in three sentences only
 # Imagine the 2D array as a simple array. Then find a middle element and compare it with the target.
@@ -20,9 +20,9 @@ class Solution:
             if matrix[r][c] == target:  # target found RETURN True
                 return True
             elif matrix[r][c] > target: # target lies to the left of mid
-                high = m - 1
+                high = mid - 1
             else:                       # target lies to right of mid
-                low = m + 1
+                low = mid + 1
 
         return False                    # target not found RETURN False
     
