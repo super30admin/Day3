@@ -28,10 +28,8 @@ var searchMatrix = function (matrix, target) {
 
 var searchMatrixV2 = function (matrix, target) {
   let row = find_row_index(matrix, target);
-  console.log("Row " + row);
   if (row === -1) return false;
   let col = find_col_index(matrix[row], target);
-  console.log("Col " + row);
   if (col === -1) return false;
   return matrix[row][col] == target;
 };
@@ -72,12 +70,12 @@ var find_col_index = function (array, target) {
   return -1;
 };
 
-let result = searchMatrixV2(
-  [
+test("Scenario #1:", () => {
+  let input = [
     [1, 3, 5, 7],
     [10, 11, 16, 20],
     [23, 30, 34, 60],
-  ],
-  3
-);
-console.log("Result " + result);
+  ];
+  let target = 3;
+  expect(searchMatrixV2(input, target)).toStrictEqual(true);
+});

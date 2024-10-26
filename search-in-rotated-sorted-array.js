@@ -30,4 +30,8 @@ var search = function (nums, target) {
   return -1;
 };
 
-console.log(search([3, 1], 3));
+test("Scenario #1:", () => {
+  let input = [3, 1];
+  let target = 3;
+  expect(search(input, target)).toBe(0);
+});
