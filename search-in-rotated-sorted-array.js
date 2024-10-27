@@ -13,9 +13,12 @@ var search = function (nums, target) {
     }
     // Check if left side is sorted
     if (nums[left] <= nums[mid]) {
+      // If target is between left side range
       if (nums[left] <= target && nums[mid] >= target) {
+        // Continue with left side binary search
         right = mid - 1;
       } else {
+        // else continue with right side binary search.
         left = mid + 1;
       }
     } else {
