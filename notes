@@ -1,0 +1,38 @@
+Scenarios we will using Binary Search:
+
+1) Array are sorted => in this case Binary Search works like magic
+{BINARY SEARCH CAN ALSO BE DONE ON UNSORTED ARRAY IF IT WILL SATISFY SECOND POINT,
+NOT MANDATORY FOR THE ARRAY TO BE SORTED}
+
+2) Eliminating or Reducing the search space by half {This eliminating half is done in
+   every iteration}
+
+So, if we are able to eliminate half of input in each and every iteration OR
+we are able to increase the search space by twice, in both the scenarios, we can go
+for binary search.
+
+Eg:
+64, 32, 16, 8, 4, 2, 1 => Reducing input size by half in each and every iteration
+
+OR
+
+1, 2, 4, 8, 16, 32, 64 => If I am able to increase the input size by twice to search
+for something
+
+then this is also a binary search
+
+Time Complexity:
+log₂(n) => log₂(64) => log₂(2)^6 => 6 iterations to identify the target
+=========
+
+Logical Operators
+
+0 && 1 = 0 {We will not be checking after 0}
+1 && 0 = 0 {check both sides}
+1 && 1 = 1 {check both sides}
+0 && 1 = 0 {We will not be checking after 0}
+
+0 || 0 = 0 {check both sides}
+1 || 0 = 1 {We will not be checking after 1}
+0 || 1 = 1 {check both sides}
+1 || 1 = 1 {We will not be checking after 1}
