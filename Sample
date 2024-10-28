@@ -5,3 +5,119 @@
 
 
 // Your code here along with comments explaining your approach in three sentences only
+
+
+/*Code 1: Search in 2D matrix
+Time Complexity:O(logn)  Space Complexity:O(1)
+Here first we imagine this as a flatten array we group it based on number of columns, find the mid index and compare it with the target element 
+we find the position of that element in matrix and then after comparing continue the binary search.
+ */
+
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        int m=matrix.length;
+        int n=matrix[0].length;
+
+        int low=0;
+        int high=m*n-1;
+
+
+        while(low<=high){
+            int mid=low+(high-low)/2;
+            int r=mid/n;
+            int c=mid%n;            
+            if(matrix[r][c]==target)
+            return true;
+            else if(matrix[r][c]<target)
+            {
+                low=mid+1;
+            }
+            else
+            high=mid-1;
+        }
+        return false;
+    }
+}
+
+
+/* Code2:Search in rotated sorted array
+Time Complexity:O(logn) Space:O(1)
+
+We first find the middle index and then check whether the given element is in left sorted range or the right sorted range by comparing the lower index
+with the middle index this gives us an idea of how the array is rotated and which side of the mid the element exists to continue the binary search
+*/
+
+class Solution {
+    public int search(int[] nums, int target) {
+        int low=0;
+        int high=nums.length-1;
+
+        while(low<=high)
+        {
+            int mid=low+(high-low)/2;
+            if(nums[mid]==target)
+            {
+                return mid;
+            }
+            else if(nums[low]<=nums[mid])
+            {
+                if(target>=nums[low] && target<nums[mid])
+                {
+                    high=mid-1;
+                }
+                else{
+                    low=mid+1;
+                }
+            }
+            else{
+                if(target>nums[mid] && target<=nums[high])
+                {
+                    low=mid+1;
+                }
+                else{
+                    high=mid-1;
+                }
+            }
+
+        }
+        return -1;
+    }
+}
+//Code 3:Search in an infinite array
+//Time complexity:O(logn) Space Complexity:O(1)
+// I have first used a while loop to get an appropriate range by multiplying high by 2 to 
+//do less binary searches within the given range, when i get an appropriate range i start with the binary search and get the target element.
+
+class Solution{
+    public int search(ArrayReader reader,int target)
+    {
+        int low=0;
+        int high=1;
+
+        
+        while(reader.get(high)<target)
+        {
+                low=high;
+                high=high*2;
+        }
+
+        while(low<=high)
+        {
+            int mid=low+(high-low)/2;
+            if(reader.get(mid)==target)
+            {
+                return mid;
+            }
+
+            else if(reader.get(mid)<target)
+            {
+                low=mid+1;
+            }
+            else{
+                high=mid-1;
+            }
+        }
+        return -1;
+        
+    }
+}
