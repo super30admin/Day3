@@ -5,3 +5,79 @@
 
 
 // Your code here along with comments explaining your approach in three sentences only
+//Search a 2D Matrix(https://leetcode.com/problems/search-a-2d-matrix/)
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+
+
+
+    int r = 0;
+
+    while (r<matrix.length){//r==0
+        int low = 0 ;
+        int high = (matrix[0].length-1);
+        int c=0;
+
+        while(low<=high){
+        int mid = low + (high - low)/2;
+        c = mid;
+        if(matrix[r][c] == target){
+            return true;
+        }else if(matrix[r][c] < target){
+            low = mid+1;
+        }else{
+            high = mid-1;
+        }
+     }
+     r++;
+    }
+
+        return false;
+    }
+
+
+
+}
+
+
+/**
+ * // This is ArrayReader's API interface.
+ * // You should not implement it, or speculate about its implementation
+ * interface ArrayReader {
+ *     public int get(int index) {}
+ * }
+ */
+//Search in Infinite sorted array:
+ //https://leetcode.com/problems/search-in-a-sorted-array-of-unknown-size/
+class Solution {
+    public int search(ArrayReader reader, int target) {
+
+        if (reader == null) {
+            return 0;
+        }
+        int low = 0 ;
+        int high = 1;
+
+        while(reader.get(high)<target){
+            low = high;
+            high = 2*high;
+        }
+
+
+        while(low<=high){
+            int mid = low + (high-low)/2;
+            if(reader.get(mid) == target){
+                return mid;
+            }else if(reader.get(mid)<target){
+                low = mid+1;
+
+
+            }else{
+                high = mid-1;
+            }
+        }
+        return -1;
+    }
+}
+
+
