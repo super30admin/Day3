@@ -1,7 +1,129 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+// Time Complexity : O(logm*n)
+// Space Complexity : O(m*n)
+// Did this code successfully run on Leetcode : YES
+// Any problem you faced while coding this : NO
 
 
-// Your code here along with comments explaining your approach in three sentences only
+// We have visualized the 2D Matrix to be one single array.
+// and performed binary search on it
+// the challenge was to find mid's exact location in the matrix but we did that by using division to find the row and mod to find the column.
+
+
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+
+        int m = matrix.length;
+        int n = matrix[0].length;
+
+        int low =0;
+        int high = m*n-1;
+
+        while(low <= high){
+
+            int mid = low + (high-low)/2;
+            int c = mid % n;
+            int r = mid / n;
+            if(matrix[r][c] == target){
+                return true;
+
+            }else if(matrix[r][c] >= target){
+                high = mid-1;
+            }else{
+                low = mid+1;
+            }
+        }
+        return false;
+    }
+}
+
+// Time Complexity : O(logn)
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : YES
+// Any problem you faced while coding this : NO
+
+// we were searching the position of an element in am array of unknown size.
+// Instead of reducing to half we went on increasing the window by double till the time high is greater than the target. 
+//once we find the appropriate window that is when high is higher then the target then apple traditional binary search method on it.
+
+/**
+ * // This is ArrayReader's API interface.
+ * // You should not implement it, or speculate about its implementation
+ * interface ArrayReader {
+ *     public int get(int index) {}
+ * }
+ */
+
+class Solution {
+    public int search(ArrayReader reader, int target) {
+
+        int high = 1,low = 0;
+        while(reader.get(high) < target){
+            low = high;
+            high = high*2;
+
+        }
+        while(low <= high){
+           int mid = low + (high-low)/2;
+           if(reader.get(mid) == target){
+            return mid;
+           } else if(reader.get(mid) < target){
+                
+                    low = mid+1;
+           }
+                 else{
+                    high = mid -1;
+                }
+           
+        }
+        return -1;
+    }
+}
+
+// Time Complexity : O(log n)
+// Space Complexity : O(m*n)
+// Did this code successfully run on Leetcode : YES
+// Any problem you faced while coding this : NO
+
+//We were searching for a target in a rotated array that was sorted.
+//we first find whether it is correctly sorted on the left side or the right side
+//Then just compare the target variable.
+
+
+class Solution {
+    public int search(int[] nums, int target) {
+        
+        int n = nums.length;
+        int low = 0, high = n-1;
+        while(low<high){
+            int mid = low + (high-low)/2;
+        
+            if (nums[mid] == target){
+                return mid;
+            }
+                else if (nums[low] <= nums[mid]){ //left sorted array
+
+                        if(target >= nums[low] && nums[mid] > target){
+                            high = mid -1;
+                        } else{
+                            low = mid +1;
+                          }
+
+                }else{
+
+                        if(target > nums[mid] && nums[high] >= target){
+                            low = mid +1;
+                        } else{
+                            
+                            high = mid -1;
+                          }
+                }
+
+        
+        }
+            if(nums[low]==target) return low;
+           return -1;  
+
+
+        }
+}
+
