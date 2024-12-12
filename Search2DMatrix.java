@@ -1,6 +1,6 @@
 /*
     Leetcode problem 74: Search a 2D Matrix
-    T.C: O(log(m * n)) :: S.C: O(1)
+    T.C: O(n log(m)) :: S.C: O(1)
 
     Solved using B.S technique:
     As the elements are sorted from left to right and following to the next row.
@@ -15,7 +15,7 @@ class Solution {
         if (matrix == null || matrix.length == 0) return result;
 
         int n = matrix.length;
-        int m = matrix[0].length;        
+        int m = matrix[0].length;
 
         for (int i = 0; i < n; i++) {
             result = binarySearch(matrix[i], 0, m - 1, target);
