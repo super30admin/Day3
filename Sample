@@ -1,7 +1,81 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+// Time Complexity :O(log(m * n))
+// Space Complexity :Constant
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
 
 
 // Your code here along with comments explaining your approach in three sentences only
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        if(matrix==null || matrix.length == 0){              //Base Condition
+            return false;
+        }
+        int low=0;                                           //calculating low and high = row * column -1
+        int high = matrix.length * matrix[0].length-1;
+        while(low<=high){                                    //Base condiotion to stop a loop and to calculate mid we did low+(high-low)/2; 
+                                                             //(high-low) to avoid overflow 
+            int mid=low+(high-low)/2;                                
+            int row = mid/matrix[0].length;                     
+            int col = mid%matrix[0].length;
+            if(matrix[row][col]==target){                   //the mid of a matrix is calculated by doing row=mid/length of the row and col = mid%length of the row
+                return true;                                   //If mid is equal to target then we found our target 
+            }
+            else{
+                if(matrix[row][col] < target){              //If arr[mid] < target then we will shift our low to mid+1 else our high to mid-1
+                    low=mid+1;
+                }
+                else{
+                    high = mid-1;
+                }
+            }
+
+        }
+        return false;                                       //If the target is nopt found then it will come outy of the loop and return false
+    }
+}
+
+
+
+
+// Time Complexity :O(log(n))
+// Space Complexity :Constant
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+
+// Your code here along with comments explaining your approach in three sentences only
+
+class Solution {
+    public int search(int[] nums, int target) {
+        if(nums.length==0){                       //Base condition
+            return -1;
+        }
+        int low=0;
+        int high=nums.length-1;                   //assigning low and high a value 0 and length-1 of array respectively  and calculate mid we did low+(high-low)/2; 
+                                                  //(high-low) to avoid overflow             
+        while(low<=high){
+            int mid=low+(high-low)/2;               
+            if(nums[mid]==target){                //If the array's[mid]==target then we will return as we found our target element     
+                return mid;
+            }
+            else if(nums[low]<=nums[mid]){        //Now as it is rotated we will find the sorted side either of the one side will be 
+                                                  // sorted we will go to that side and check if the target falls in that range else we will go to other side      
+                if(target <nums[mid] && target >= nums[low]){  //if it lies on left side then we will set high =mid-1 else low to miod +1
+                    high=mid-1;
+                }
+                else{
+                    low=mid+1;
+                }
+            }
+            else{
+                if(target>nums[mid] && target <=nums[high]){
+                    low=mid+1;
+                }else{
+                    high=mid-1;
+                }
+
+            }
+        }
+        return -1;                                      //If not found then we will return -1;
+    }
+}
