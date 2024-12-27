@@ -5,6 +5,10 @@
 
 // Since it is searching in a sorted array - use Binary search technique
 
+/**
+ * In the given 2D which is sorted,
+ * we can use binary search to first find the row and then on that row use binary search again to find the target
+ */
 public class SearchMatrix {
     public boolean searchMatrix(int[][] matrix, int target) {
         int start = 0;

@@ -4,6 +4,12 @@
 // Any problem you faced while coding this : No
 
 // Since it is searching in a sorted array - use Binary search technique
+
+/**
+ * In a rotated sorted array, at any given point either the left
+ * half or the right half of the array has to be a sorted array,
+ * using that theory look into either left half or right half till the point where start becomes greater than end
+ */
 public class SearchSortedRotatedArray {
     public int search(int[] nums, int target) {
         return binarySearch(nums, 0, nums.length - 1, target);
