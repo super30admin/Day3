@@ -1,6 +1,7 @@
-#space complexity: O(1)
-#Time Complexity: O(log(m * n))
-# run on leetcode: yes
+# Time Complexity :  O(log(m * n))
+# Space Complexity : O(1)
+# Did this code successfully run on Leetcode : yes
+# Any problem you faced while coding this : No
 class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
         low= 0
