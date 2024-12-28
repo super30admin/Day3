@@ -1,4 +1,6 @@
-class Solution:
+# The SC - O(1)
+#  TC - To search the pivotIndex - O(logn) + To search the target in the array would be O(logn). So total Complexity would be O(log n)
+ class Solution:
     
     def search(self, nums: List[int], target: int) -> int:
 
