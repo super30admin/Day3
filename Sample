@@ -149,3 +149,45 @@ class Solution {
         
     }
 }
+
+
+
+/**
+ * // This is ArrayReader's API interface.
+ * // You should not implement it, or speculate about its implementation
+ * interface ArrayReader {
+ *     public int get(int index) {}
+ * }
+ */
+
+class Solution {
+    public int search(ArrayReader reader, int target) {
+        
+        int low = 0;
+        int high = 9999;
+        int mid=0;
+
+        if (reader.get(0) == target) {
+            return 0;
+        }
+        while (low <= high) {
+            mid = low + (high-low)/2;
+            if (reader.get(mid) != (2^31)- 1) {
+                if (reader.get(mid) == target) {
+                    return mid;
+                }
+                if (target < reader.get(mid) ) {
+                    high = mid-1;
+                }
+                if (target > reader.get(mid)) {
+                    low = mid+1;
+                }
+
+            } else {
+                high = high-1000;
+            }
+        }
+        return -1;
+
+    }
+}
