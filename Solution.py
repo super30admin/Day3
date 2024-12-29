@@ -18,8 +18,8 @@ def matrix_search(matrix):
         
     while l <= r:
         mid = (l+r)//2
-        r = mid % n
-        c = mid / n
+        r = mid / m
+        c = mid % m
         if matrix[r][c] == target:
             return True
         elif matrix[r][c] > target:
