@@ -7,10 +7,9 @@
 
 # Similar to performing normal binary search except compute indexes based on the grid to get element at mid.
 
-def matrix_search(matrix):
+def matrix_search(matrix, target):
     if not matrix or len(matrix)==0:
         return False
-            
     n = len(matrix)
     m = len(matrix[0])
     l = 0
@@ -18,15 +17,16 @@ def matrix_search(matrix):
         
     while l <= r:
         mid = (l+r)//2
-        r = mid / m
-        c = mid % m
-        if matrix[r][c] == target:
+        x = mid / m
+        y = mid % m
+        if matrix[x][y] == target:
             return True
-        elif matrix[r][c] > target:
+        elif matrix[x][y] > target:
             r = mid - 1
         else:
             l = mid + 1
-    return False
+        return False
+
 
 
 ######### Search in a Roatated Sorted Array ###########
@@ -62,5 +62,4 @@ def search(nums, target):
                 l = mid + 1
             else:
                 r = mid -1
-
-        return -1
+    return -1
