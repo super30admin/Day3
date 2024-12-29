@@ -25,7 +25,7 @@ def matrix_search(matrix, target):
             r = mid - 1
         else:
             l = mid + 1
-        return False
+    return False
 
 
 
