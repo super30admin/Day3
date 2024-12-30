@@ -1,4 +1,8 @@
 class Solution {
+    // Time Complexity: O(log(m*n))
+    // Space Complexity: O(1)
+    // thought process: we take the x and y axis and convert it into a 1D array and then apply binary search on it
+    // we get the row and column by using division and modulus respectively
     public boolean searchMatrix(int[][] matrix, int target) {
         if (matrix == null || matrix.length ==0){
             return false;

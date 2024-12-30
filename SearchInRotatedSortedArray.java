@@ -1,4 +1,10 @@
 class Solution {
+    // Time Complexity: O(log n)
+    // Space Complexity: O(1)
+    // Did this code successfully run on Leetcode : Yes
+    // thought process: at every step we're checking which part is sorted and then we're checking if the target lies in that part
+    // if it does, we're doing a binary search in that part, if it doesn't, we're doing a binary search in the other part
+    // we're doing this until we find the target or the low and high pointers cross each others
     public int search(int[] nums, int target){ 
     if (nums == null || nums.length ==0){
         return -1;
