@@ -1,6 +1,6 @@
 // similar to single dimension array, find the mid element and if the target is less than mid, search in left half or search in right half.
 // space complexity: O(1)
-// time complexity: O(n)
+// time complexity: O(logn)
 
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
