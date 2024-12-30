@@ -9,6 +9,7 @@
 //Time complexity
 O(logn)
 //Space complexity
+
 Constant time
 class Solution {
     public int search(int[] nums, int target) {
@@ -120,7 +121,11 @@ class Solution {
     }
 }
 
+// 2D matrix
 
+//Time complexity
+O(logn)
+//Space complexity
 
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
@@ -150,6 +155,7 @@ class Solution {
     }
 }
 
+// Sorted array unknown size
 
 
 /**
@@ -159,6 +165,10 @@ class Solution {
  *     public int get(int index) {}
  * }
  */
+//Time complexity
+O(logn)
+//Space complexity
+
 
 class Solution {
     public int search(ArrayReader reader, int target) {
