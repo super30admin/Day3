@@ -1,0 +1,29 @@
+// similar to single dimension array, find the mid element and if the target is less than mid, search in left half or search in right half.
+// space complexity: O(1)
+// time complexity: O(logn)
+
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+	int low = 0;
+    int r = matrix.length;
+    int c = matrix[0].length;
+	int high = (r * c) -1;
+	int mid = 0;
+	int midRow = 0;
+	int midCol = 0;
+	
+	while (low <= high) {
+		mid = (low+high) / 2;
+        midRow = mid / c;
+        midCol = mid % c;
+		if (matrix[midRow][midCol]== target) {
+			return true;
+		} else if (matrix[midRow][midCol] < target) {
+			low = mid+1;
+		} else {
+			high = mid-1;
+		}
+	}
+	return false;
+     }
+}
