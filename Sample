@@ -5,3 +5,135 @@
 
 
 // Your code here along with comments explaining your approach in three sentences only
+
+//Time complexity
+O(logn)
+//Space complexity
+Constant time
+
+// Sorted array search of known size
+
+class Solution {
+    public int search(int[] nums, int target) {
+        int low=0,high=0,mid=0;
+        if (nums.length == 1) {
+            if(nums[nums.length-1] == target) {
+                return 0;
+            } else {
+                return -1;
+            }
+        }
+        if (nums[0] < nums[nums.length-1] && target > nums[nums.length-1]){
+            return -1;
+        }
+        low=0;
+        high=nums.length-1;
+
+        while (low <=high) {
+            mid = low +(high-low) / 2;
+            if(nums[mid] == target) {
+                return mid;
+            } else {
+                if (nums[low] <= nums[mid]) {
+                    if (nums[low] <= target && target < nums[mid]) {
+                        high = mid-1;
+                    } else {
+                        low = mid+1;
+                    }
+
+                } else {
+                    if (nums[mid+1] <= nums[high]) {
+                        if (nums[mid] < target && target <= nums[high]) {
+                            low = mid + 1;
+                        } else {
+                            high = mid-1;
+                        }
+                    }
+                }
+            }
+        }
+        return -1;
+
+    }
+}
+
+// 2D matrix
+
+//Time complexity
+O(logn)
+//Space complexity
+
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        int m = matrix.length;
+        int n = matrix[0].length;
+        int low = 0;
+        int high = m*n -1;
+        int mid=0;
+        while(low <=high) {
+            mid = low +(high-low)/2;
+            int rowid = mid/n;
+            int colid = mid%n;
+            if (target == matrix[rowid][colid]) {
+                return true;
+            } else {
+                if (target < matrix[rowid][colid] ){
+                    high = mid-1;
+                } else {
+                    low = mid+1;
+                }
+            }
+        }
+        return false;
+
+        
+        
+    }
+}
+
+// Sorted array unknown size
+
+
+/**
+ * // This is ArrayReader's API interface.
+ * // You should not implement it, or speculate about its implementation
+ * interface ArrayReader {
+ *     public int get(int index) {}
+ * }
+ */
+//Time complexity
+O(logn)
+//Space complexity
+
+
+class Solution {
+    public int search(ArrayReader reader, int target) {
+        
+        int low = 0;
+        int high = 9999;
+        int mid=0;
+
+        if (reader.get(0) == target) {
+            return 0;
+        }
+        while (low <= high) {
+            mid = low + (high-low)/2;
+            if (reader.get(mid) != (2^31)- 1) {
+                if (reader.get(mid) == target) {
+                    return mid;
+                }
+                if (target < reader.get(mid) ) {
+                    high = mid-1;
+                }
+                if (target > reader.get(mid)) {
+                    low = mid+1;
+                }
+
+            } else {
+                high = high-1000;
+            }
+        }
+        return -1;
+
+    }
+}
