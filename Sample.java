@@ -70,3 +70,34 @@ class Solution {
         return -1;
     }
 }
+
+// Time Complexity : 0(log(n))
+// Space Complexity : 0(1)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no
+/*Intuition is to take a high starting at index 1 and keep doubling it while doing the
+binary search once the target is not found and when the target is supposed to lie
+in the upper half of the array
+ */
+class Solution {
+    public int search(ArrayReader reader, int target) {
+        int low=0;
+        int high=1;
+
+        while(low<=high){
+            if(reader.get(high)==target){
+                return high;
+            }
+            int mid=low+(high-low)/2;
+            if(reader.get(mid)==target){
+                return mid;
+            }else if(reader.get(mid)< target){
+                low=mid+1;
+                high=2*high;
+            }else{
+                high=mid-1;
+            }
+        }
+        return -1;
+    }
+}
