@@ -1,0 +1,13 @@
+Time Complexity : O(log(n)+log(n))
+Space Complexity : O(1)
+Did this code successfully run on Leetcode : Yes
+Any problem you faced while coding this : No
+
+
+Your code here along with comments explaining your approach in three sentences only
+This question contains 2 parts:
+(i)Finding the smallest number in the form of pow(2,k) which is greater than or equal to the size of the array and the probable index
+ranges for these 2 numbers.
+(ii) Performing binary search on the range of indices found above.
+ I did the first part by constantly doubling the estimated size of array, until the element found is greater than target
+ Then applied BS on the range of half of the above index to the above index.
