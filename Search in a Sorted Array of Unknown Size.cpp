@@ -20,7 +20,7 @@ public:
         int low = 0, high = 1;
         while (reader.get(high) <= target)
         {
-            low = high;
+            low = high + 1;
             high *= 2;
         }
         // Binary Search on the range
