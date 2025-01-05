@@ -1,3 +1,6 @@
+# Time complexity - O(log n) # Since performing binary search
+# Space complexity - O(1) # No extra space utilized by the solution
+
 from typing import List
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
