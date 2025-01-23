@@ -1,0 +1,45 @@
+// Time Complexity : O(n*m) where n is the number of rows and m is number of columns
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : Yes, I initially solved it in O(n+m) by checking whether the target lies between the first and last element of each row.
+//Then I tried performing Binary search on rows after checking whether the target lies in between the first and last element of each row. This took me O(n*log m).
+//I did not receive the idea of flattening the 2D to 1D array
+
+
+
+
+// Your code here along with comments explaining your approach in three sentences only
+class Solution {
+public:
+    bool searchMatrix(vector<vector<int>>& matrix, int target) {
+        int r = matrix.size();
+        int c = matrix[0].size();
+        //flattening the array from 2D to 1D
+        int i=0;
+        int j=r*c-1;
+        while(i<=j){
+            //finding the mid of the flattened 1D array
+            int midIdx = (i+j)/2;
+
+            //Finding the corresponding row and column in the 2D matrix
+            int row = midIdx/c;
+            int col = midIdx%c;
+            //finding the corresponding mid value
+            int midVal = matrix[row][col];
+            //checking if the mid value is equal to the target, if yes then return true
+            if(midVal == target){
+                return true;
+            }
+            //if the mid value is smaller then do binary search in the upper half
+            else if(midVal < target){
+                i=midIdx+1;
+            }
+            //else do binary search in the lower half
+            else{
+                j=midIdx-1;
+            }
+        }
+        //if target is not found return false
+        return false;
+    }
+};

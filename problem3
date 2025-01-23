@@ -1,0 +1,16 @@
+// Time Complexity : O(log n) 
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode :No
+// Any problem you faced while coding this :No
+
+
+// Your code here along with comments explaining your approach in three sentences only
+Approach:
+1. Take lower_bound = 0, and upper_bound = 1 and check if the target is less than arr[high]
+2. If yes, then perform binary search and return the index.
+3. If no, double the upper_bound until
+    - an exception is thrown. 
+    - target lies in between lower_bound and upper_bound
+4. Once the lower_bound and upper_bound are determined, perform binary search and return the index.
+5. If not found, then return -1
+
