@@ -1,9 +1,9 @@
-// Time Complexity : O(n*m) where n is the number of rows and m is number of columns
+// Time Complexity: O(log n*m) where n is the number of rows and m is number of columns
 // Space Complexity : O(1)
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : Yes, I initially solved it in O(n+m) by checking whether the target lies between the first and last element of each row.
 //Then I tried performing Binary search on rows after checking whether the target lies in between the first and last element of each row. This took me O(n*log m).
-//I did not receive the idea of flattening the 2D to 1D array
+//Then I got the idea of flattening the 2D to 1D array 
 
 
 
