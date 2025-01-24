@@ -17,12 +17,12 @@ public class Problem1 {
 
         Problem1 p = new Problem1();
 
-        int[][] matrix = new int[4][4];
+        int[][] matrix = new int[3][4];
 //        matrix = {{1,3,5,7},{10,11,16,20},{23,30,34,60}};
         matrix[0] = new int[] {1, 3, 5, 7};
         matrix[1] = new int[] {10, 11, 16, 20};
         matrix[2] = new int[] {23, 30, 34, 60};
-        int target = 60;
+        int target = 5;
 
         System.out.println(p.search(matrix, target));
     }
