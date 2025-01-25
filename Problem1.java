@@ -3,10 +3,6 @@
 // Did this code successfully run on Leetcode : ues
 // Any problem you faced while coding this : No
 
-/**
- * The same code works on leetcode but on editor it does not works correctly
- */
-
 
 // Your code here along with comments explaining your approach in three sentences only
 
