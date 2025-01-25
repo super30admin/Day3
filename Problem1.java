@@ -22,7 +22,8 @@ public class Problem1 {
         matrix[0] = new int[] {1, 3, 5, 7};
         matrix[1] = new int[] {10, 11, 16, 20};
         matrix[2] = new int[] {23, 30, 34, 60};
-        int target = 5;
+        int target = 60;
+//        int target = 20;
 
         System.out.println(p.search(matrix, target));
     }
@@ -39,8 +40,8 @@ public class Problem1 {
 
             int mid = low + (high - low) /2;
 
-            int row = mid % n;
-            int col = mid / n;
+            int row = mid / n;
+            int col = mid % n;
 
             if (matrix[row][col] == target) {
                 return true;
