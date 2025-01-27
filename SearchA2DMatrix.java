@@ -1,3 +1,5 @@
+//Time Complexity: O(log(m*n))
+//Space Complexity: O(1)
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
         int m = matrix.length;

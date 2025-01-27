@@ -1,3 +1,5 @@
+//Time Complexity: O(log(n))
+//Space Complexity: O(1)
 class ArrayReader
 {
     private int[] arr;
