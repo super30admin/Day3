@@ -5,3 +5,31 @@
 
 
 // Your code here along with comments explaining your approach in three sentences only
+
+//Problem1
+//Search a 2D Matrix(https://leetcode.com/problems/search-a-2d-matrix/  *\
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        int m= matrix.length;
+        int  n=matrix[0].length;
+        int h= m*n-1;
+        int l=0;
+        int mid;
+        int r;
+        int c;
+        while(l<=h){
+            mid= l+(h-l)/2;
+            r=mid/n;
+            c=mid%n;
+            if(target==matrix[r][c]) return true;
+            if(target<matrix[r][c]){
+            h=mid-1;
+            }
+            else{
+                l=mid+1;
+            }
+        }
+        return false;
+
+    }
+}
