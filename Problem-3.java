@@ -1,3 +1,6 @@
+// This solution first calculates the upper bound and then applies binary search using the calculated upperbound
+//Time Complexity: O(log n + log n)=> O(2logN) => O(log n)
+
 class SearchInASortedArrayOfUnknownSize {
     public int search(ArrayReader reader, int target) {
         int upperBound = 1;
