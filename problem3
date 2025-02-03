@@ -14,3 +14,31 @@ Approach:
 4. Once the lower_bound and upper_bound are determined, perform binary search and return the index.
 5. If not found, then return -1
 
+
+
+class Solution {
+public:
+    int search(const ArrayReader& reader, int target) {
+        if(reader.get(0) == target){
+            return 0;
+        }
+        int i=0, j=1;
+        while(reader.get(j) < target){
+            i = j;
+            j *= 2;
+        }
+        while(i<=j){
+            int mid = i + (j-i)/2;
+            if(reader.get(mid) == target){
+                return mid;
+            }
+            else if(reader.get(mid) > target) j = mid-1;
+            else{
+                i = mid+1;
+            }
+        }
+        return -1;
+        
+    }
+};
+
