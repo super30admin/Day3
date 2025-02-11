@@ -12,7 +12,7 @@ class Solution(object):
         low,high = 0, len(nums)- 1
         
         while(low <= high):
-            mid = low + (high - low) / 2.    #calculate middle index
+            mid = low + (high - low) / 2    #calculate middle index
             if nums[mid] == target:  
                 return mid
 
