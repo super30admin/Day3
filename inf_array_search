@@ -1,0 +1,20 @@
+def search(reader: ArrayReader, target):
+    left, right = 0, 1
+    while reader.get(right) < (2**31 - 1):
+        if reader.get(right) >= target:
+            break
+        left = right
+        right *= 2
+    
+    while left <= right:
+        mid = left + (right - left) // 2
+        val = reader.get(mid)
+        
+        if val == target:
+            return mid
+        elif val > target or val == (2**31 - 1):
+            right = mid - 1
+        else:
+            left = mid + 1
+    
+    return -1 
